@@ -1,0 +1,459 @@
+/* ============================================================
+   PhishGuard - Dashboard & Report Layouts
+   ============================================================ */
+
+/* --- Dashboard Stats Grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-8);
+}
+
+.stats-grid .stat-card-icon.total {
+  background: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.stats-grid .stat-card-icon.phishing {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.stats-grid .stat-card-icon.suspicious {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.stats-grid .stat-card-icon.legitimate {
+  background: #DCFCE7;
+  color: var(--color-emerald);
+}
+
+/* --- Dashboard Charts Grid --- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-8);
+}
+
+.charts-grid .chart-container {
+  min-height: 260px;
+  max-height: 320px;
+}
+
+/* --- Report Layout --- */
+.report-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+.report-score {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.report-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.report-url {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  margin-bottom: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+}
+
+.report-classification {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+.report-summary {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-3);
+}
+
+.report-recommendation {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4) var(--spacing-5);
+  font-size: var(--font-size-sm);
+}
+
+.report-recommendation strong {
+  display: block;
+  margin-bottom: var(--spacing-1);
+}
+
+.report-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
+}
+
+/* --- Report Sections --- */
+.report-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.report-section h4 {
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* --- Category Scores --- */
+.category-scores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* --- Report Data Grid --- */
+.report-data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.report-data-item {
+  padding: var(--spacing-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+}
+
+.report-data-item dt {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-1);
+}
+
+.report-data-item dd {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  word-break: break-all;
+}
+
+/* --- Redirect Chain --- */
+.redirect-chain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.redirect-hop {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.redirect-hop-status {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: var(--color-text-inverse);
+  flex-shrink: 0;
+}
+
+.redirect-hop-url {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.redirect-hop-arrow {
+  color: var(--color-text-light);
+  flex-shrink: 0;
+}
+
+/* --- TLS Info Grid --- */
+.tls-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+}
+
+.tls-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.tls-item .icon {
+  flex-shrink: 0;
+}
+
+.tls-item-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.tls-item-value {
+  font-weight: var(--font-weight-medium);
+}
+
+/* --- Top Features (ML) --- */
+.top-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.top-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.top-feature-name {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.top-feature-bar {
+  flex: 1;
+  height: 0.5rem;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.top-feature-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-navy);
+}
+
+.top-feature-value {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  min-width: 48px;
+  text-align: right;
+}
+
+/* --- Scan ID and Metadata --- */
+.report-id {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-2);
+}
+
+.report-timestamp {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* --- Confidence Indicator --- */
+.confidence {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.confidence-value {
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Rule Info --- */
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.rule-item {
+  padding: var(--spacing-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-border);
+}
+
+.rule-item-fired {
+  border-left-color: var(--color-warning);
+  background: var(--color-warning-light);
+}
+
+.rule-item h5 {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-1);
+}
+
+.rule-item p {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+.rule-item .badge {
+  margin-top: var(--spacing-2);
+}
+
+/* --- Admin Tables --- */
+.admin-section {
+  margin-bottom: var(--spacing-8);
+}
+
+.admin-section h3 {
+  margin-bottom: var(--spacing-4);
+}
+
+/* --- Scan Progress Page --- */
+.scan-progress {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scan-progress-header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.scan-progress-url {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  margin-top: var(--spacing-2);
+}
+
+.scan-progress-overall {
+  margin-bottom: var(--spacing-6);
+}
+
+/* --- Report Chart Tabs Area --- */
+.report-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.report-charts .card {
+  min-height: 200px;
+}
+
+/* --- Methodology Page --- */
+.method-section {
+  margin-bottom: var(--spacing-8);
+}
+
+.method-section h3 {
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.ml-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.ml-metric-card {
+  text-align: center;
+  padding: var(--spacing-5);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+}
+
+.ml-metric-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+
+.ml-metric-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-1);
+}
+
+/* --- Limitations List --- */
+.limitations-list {
+  list-style: disc;
+  padding-left: var(--spacing-6);
+}
+
+.limitations-list li {
+  padding: var(--spacing-2) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* --- PDF Download Button --- */
+.download-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* --- Scan History Filter Row --- */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-6);
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.history-header h2 {
+  margin: 0;
+}
+
+/* --- Risk Score Cell --- */
+.risk-score-cell {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+}
+
+/* --- Scan Link in Table --- */
+.scan-link {
+  color: var(--color-emerald-dark);
+  text-decoration: none;
+}
+
+.scan-link:hover {
+  text-decoration: underline;
+}

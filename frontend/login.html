@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PhishGuard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <main class="pg-main auth-page">
+    <div class="container">
+      <div class="auth-card card">
+        <div class="card-body">
+          <div class="auth-header">
+            <svg class="icon icon-xl" aria-hidden="true"><use href="/img/icons.svg#icon-shield"></use></svg>
+            <h2>Welcome Back</h2>
+            <p>Sign in to your PhishGuard account</p>
+          </div>
+
+          <div data-error="general" class="form-error mb-4"></div>
+
+          <form id="login-form" novalidate>
+            <div class="form-group">
+              <label for="login-email" class="form-label">Email Address</label>
+              <input type="email" id="login-email" name="email" class="form-input" placeholder="you@example.com" autocomplete="email" required>
+              <div data-error="email" class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="login-password" class="form-label">Password</label>
+              <input type="password" id="login-password" name="password" class="form-input" placeholder="Enter your password" autocomplete="current-password" required>
+              <div data-error="password" class="form-error"></div>
+            </div>
+
+            <div class="form-group text-right">
+              <a href="/forgot-password.html" class="text-sm">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-full">Sign In</button>
+          </form>
+
+          <div class="auth-footer mt-6">
+            Don't have an account? <a href="/register.html">Create one</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="pg-footer"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

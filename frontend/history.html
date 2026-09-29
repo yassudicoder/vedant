@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan History - PhishGuard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <main class="pg-main">
+    <div class="container">
+
+      <div class="history-header">
+        <h2>Scan History</h2>
+        <div class="filter-bar">
+          <input type="text" id="history-search" class="form-input" placeholder="Search by URL..." aria-label="Search scans">
+          <select id="history-classification" class="form-select" aria-label="Filter by classification">
+            <option value="">All Classifications</option>
+            <option value="LEGITIMATE">Legitimate</option>
+            <option value="SUSPICIOUS">Suspicious</option>
+            <option value="PHISHING">Phishing</option>
+            <option value="ANALYSIS_FAILED">Failed</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Loader -->
+      <div id="history-loader" class="loader hidden">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="history-empty" class="hidden">
+        <div class="empty-state">
+          <svg class="icon" aria-hidden="true"><use href="/img/icons.svg#icon-clock"></use></svg>
+          <h3>No Scans Found</h3>
+          <p>You haven't analyzed any URLs yet, or no results match your filters.</p>
+          <a href="/" class="btn btn-primary mt-4">Analyze a URL</a>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>URL</th>
+                <th>Classification</th>
+                <th>Risk Score</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="history-pagination" class="pagination"></div>
+
+    </div>
+  </main>
+
+  <div id="pg-footer"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/history.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan Report - PhishGuard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <main class="pg-main">
+    <div class="container">
+
+      <!-- Loader -->
+      <div id="result-loader" class="loader">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Error -->
+      <div id="result-error" class="hidden">
+        <div class="empty-state">
+          <svg class="icon icon-xl" aria-hidden="true"><use href="/img/icons.svg#icon-x-circle"></use></svg>
+          <h3>Report Not Found</h3>
+          <p><span>The requested scan report could not be loaded.</span></p>
+          <a href="/" class="btn btn-primary mt-4">Scan a URL</a>
+        </div>
+      </div>
+
+      <!-- Report Content -->
+      <div id="result-content" class="hidden">
+
+        <!-- Report Header -->
+        <div class="report-header">
+          <div class="report-score">
+            <div id="risk-gauge" class="risk-gauge" aria-label="Risk score gauge"></div>
+          </div>
+          <div class="report-meta">
+            <div id="report-id" class="report-id"></div>
+            <div class="report-url" id="report-url"></div>
+            <div class="report-classification">
+              <span id="report-classification" class="badge badge-lg"></span>
+              <span id="report-band" class="text-sm font-semibold"></span>
+              <span class="confidence">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="/img/icons.svg#icon-bar-chart"></use></svg>
+                Confidence: <span id="report-confidence" class="confidence-value"></span>
+              </span>
+            </div>
+            <p id="report-summary" class="report-summary"></p>
+            <div class="report-recommendation">
+              <strong>Recommendation</strong>
+              <span id="report-recommendation"></span>
+            </div>
+            <div class="report-actions">
+              <button id="download-pdf-btn" class="btn btn-secondary download-pdf">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="/img/icons.svg#icon-download"></use></svg>
+                Download PDF
+              </button>
+              <button id="share-btn" class="btn btn-secondary">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="/img/icons.svg#icon-external-link"></use></svg>
+                Copy Link
+              </button>
+            </div>
+            <div class="report-timestamp mt-2">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="/img/icons.svg#icon-clock"></use></svg>
+              <span id="report-time"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Scores -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h4>Category Scores</h4>
+          </div>
+          <div class="card-body">
+            <div id="category-scores" class="category-scores"></div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="report-charts">
+          <div class="card">
+            <div class="card-header"><h4>Risk by Category</h4></div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="chart-categories"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h4>Scoring Components</h4></div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="chart-components"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="card mb-6">
+          <div class="card-header card-header-flat">
+            <div class="tabs" role="tablist">
+              <button class="tab-btn active" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+              <button class="tab-btn" role="tab" data-tab="url">URL Analysis</button>
+              <button class="tab-btn" role="tab" data-tab="domain">Domain</button>
+              <button class="tab-btn" role="tab" data-tab="tls">TLS</button>
+              <button class="tab-btn" role="tab" data-tab="page">Page</button>
+              <button class="tab-btn" role="tab" data-tab="redirects">Redirects</button>
+              <button class="tab-btn" role="tab" data-tab="ml">ML Model</button>
+              <button class="tab-btn" role="tab" data-tab="rules">Rules</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="tab-overview" class="tab-panel active" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-url" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-domain" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-tls" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-page" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-redirects" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-ml" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+            <div id="tab-rules" class="tab-panel" role="tabpanel"><div class="tab-content"></div></div>
+          </div>
+        </div>
+
+        <!-- Findings -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h4>All Findings</h4>
+          </div>
+          <div class="card-body">
+            <div id="findings-list"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="pg-footer"></div>
+
+  <script src="/vendor/chart.umd.min.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/result.js"></script>
+</body>
+</html>

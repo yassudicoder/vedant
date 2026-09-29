@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard - URL Safety Analysis</title>
+  <meta name="description" content="Analyze URLs for phishing indicators and security threats with PhishGuard.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Protect Yourself from <span class="highlight">Phishing</span></h1>
+      <p>Analyze any URL for phishing indicators, suspicious patterns, and security threats using advanced detection techniques.</p>
+      <form id="url-form" class="url-input-group" action="/scan.html" method="GET">
+        <div class="url-input-wrap">
+          <svg class="icon" aria-hidden="true"><use href="/img/icons.svg#icon-search"></use></svg>
+          <input type="text" name="url" class="url-input" placeholder="Enter a URL to analyze (e.g. https://example.com)" autocomplete="off" required aria-label="URL to analyze">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Analyze</button>
+      </form>
+      <p class="text-sm hero-subtitle">Free, no account required. Your privacy is respected.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>PhishGuard uses multiple analysis techniques to evaluate the safety of a URL.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Submit URL</h4>
+          <p>Enter any URL you want to check. We accept both HTTP and HTTPS addresses.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Multi-Layer Analysis</h4>
+          <p>We analyze URL structure, domain registration, TLS certificates, page content, and more.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>ML Detection</h4>
+          <p>A trained machine learning model evaluates patterns known to be associated with phishing.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Get Results</h4>
+          <p>Receive a detailed report with risk score, classification, and actionable recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Features</h2>
+        <p>Comprehensive security analysis powered by multiple detection engines.</p>
+      </div>
+      <div class="features-grid">
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-search"></use></svg>
+          </div>
+          <h3>URL Analysis</h3>
+          <p>Examines URL structure, suspicious patterns, encoding tricks, and known shortener services.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-globe"></use></svg>
+          </div>
+          <h3>Domain Intelligence</h3>
+          <p>Checks domain registration age, DNS records, hosting info, and reputation databases.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-lock"></use></svg>
+          </div>
+          <h3>TLS Inspection</h3>
+          <p>Validates certificates, checks for self-signed certs, and analyzes encryption strength.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-file-text"></use></svg>
+          </div>
+          <h3>Page Structure</h3>
+          <p>Analyzes HTML content for login forms, hidden elements, suspicious scripts, and brand impersonation.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-bar-chart"></use></svg>
+          </div>
+          <h3>ML Detection</h3>
+          <p>Machine learning model trained on 200K+ URLs to identify phishing patterns with high accuracy.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="/img/icons.svg#icon-shield"></use></svg>
+          </div>
+          <h3>Rule Engine</h3>
+          <p>Expert-crafted rules detect multi-signal phishing combinations that individual checks might miss.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="disclaimer text-center">
+        <p class="mb-2"><strong>Disclaimer</strong></p>
+        <p class="mb-0">This automated assessment is based on available technical signals and should not be treated as definitive proof of website legitimacy or maliciousness. Always exercise caution when visiting unfamiliar websites.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="pg-footer"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

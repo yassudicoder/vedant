@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detection Methodology - PhishGuard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <main class="pg-main">
+    <div class="container">
+
+      <div class="section-header mb-8">
+        <h1>Detection Methodology</h1>
+        <p>How PhishGuard analyzes URLs and identifies potential phishing threats.</p>
+      </div>
+
+      <!-- Analysis Stages -->
+      <div class="method-section">
+        <h3>Analysis Pipeline</h3>
+        <p class="text-secondary mb-4">PhishGuard performs a multi-stage analysis for every URL submitted. Each stage contributes findings that feed into the final risk assessment.</p>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="method-stage">
+              <div class="method-stage-num">1</div>
+              <div>
+                <h4>URL Validation &amp; Analysis</h4>
+                <p>The URL is validated, normalized, and analyzed for structural indicators such as excessive length, suspicious characters, IP address hosts, encoded content, URL shorteners, and domain entropy.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">2</div>
+              <div>
+                <h4>DNS &amp; Domain Analysis</h4>
+                <p>Domain registration data is retrieved via RDAP/WHOIS to check domain age, registrar, and registration status. DNS records (A, AAAA, MX, NS, SPF, DMARC) are examined, and ASN/geolocation data is collected.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">3</div>
+              <div>
+                <h4>HTTPS &amp; TLS Inspection</h4>
+                <p>The TLS certificate is validated, checking for self-signed certificates, hostname mismatches, expiration, and issuer credibility. TLS version and cipher strength are also evaluated.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">4</div>
+              <div>
+                <h4>Redirect Analysis</h4>
+                <p>Redirect chains are followed safely, checking for cross-domain redirects, HTTPS downgrades, URL shortener expansion, meta refresh redirects, and JavaScript-based redirections.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">5</div>
+              <div>
+                <h4>Webpage Structure Analysis</h4>
+                <p>HTML content is parsed to detect login forms, password fields, external form actions, hidden elements, iframes, suspicious script patterns, and brand impersonation signals.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">6</div>
+              <div>
+                <h4>Brand Detection</h4>
+                <p>Known brand names are checked against the URL, page title, visible text, favicon, and form actions. Typosquatting detection uses edit distance, homoglyph analysis, and combosquat patterns.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">7</div>
+              <div>
+                <h4>Machine Learning Model</h4>
+                <p>A trained model evaluates host and lexical features extracted from the URL to produce a phishing probability score. The model output is one component of the final risk assessment.</p>
+              </div>
+            </div>
+            <div class="method-stage">
+              <div class="method-stage-num">8</div>
+              <div>
+                <h4>Rule Engine &amp; Risk Scoring</h4>
+                <p>Expert-crafted rules detect multi-signal combinations. The risk engine combines ML probability, rule findings, webpage signals, and domain trust into a final 0-100 risk score with classification.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ML Model Info -->
+      <div class="method-section">
+        <h3>Machine Learning Model</h3>
+        <p class="text-secondary mb-4">The ML component uses host-lexical features extracted from the URL structure. Model metrics are loaded from the trained model artifact.</p>
+        <div id="ml-metrics">
+          <div class="loader">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Risk Scoring -->
+      <div class="method-section">
+        <h3>Risk Scoring</h3>
+        <div class="card">
+          <div class="card-body">
+            <p class="mb-4">The final risk score (0-100) is computed as a weighted combination of available analysis components:</p>
+            <ul class="limitations-list mb-4">
+              <li><strong>ML Component:</strong> Phishing probability from the trained model</li>
+              <li><strong>Rules Component:</strong> Points from URL, redirect, and rule findings (saturated)</li>
+              <li><strong>Webpage Component:</strong> Points from webpage and brand analysis findings</li>
+              <li><strong>Domain Component:</strong> Points from domain, TLS, and reputation findings</li>
+            </ul>
+            <p class="mb-4">Classification thresholds:</p>
+            <div class="report-data-grid">
+              <div class="report-data-item">
+                <dt>LEGITIMATE</dt>
+                <dd>Risk score below 30 (Low band)</dd>
+              </div>
+              <div class="report-data-item">
+                <dt>SUSPICIOUS</dt>
+                <dd>Risk score 30-59 (Moderate band)</dd>
+              </div>
+              <div class="report-data-item">
+                <dt>PHISHING</dt>
+                <dd>Risk score 60-79 (High band)</dd>
+              </div>
+              <div class="report-data-item">
+                <dt>PHISHING (Critical)</dt>
+                <dd>Risk score 80+ (Critical band)</dd>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rules -->
+      <div class="method-section">
+        <h3>Rule Engine</h3>
+        <p class="text-secondary mb-4">Rules detect multi-signal phishing patterns that individual checks might miss. A single finding never pushes the classification to PHISHING by itself -- only combinations of signals can.</p>
+        <div id="rules-list">
+          <div class="loader">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Limitations -->
+      <div class="method-section">
+        <h3>Limitations</h3>
+        <div class="card">
+          <div class="card-body">
+            <ul class="limitations-list">
+              <li>This tool provides an automated technical assessment and should not be treated as definitive proof of legitimacy or maliciousness.</li>
+              <li>Phishing sites can be taken down or modified after analysis. Results reflect the state at the time of scanning.</li>
+              <li>The ML model was trained on a specific dataset and may not recognize novel phishing techniques not present in the training data.</li>
+              <li>Domain registration data may be incomplete or unavailable for certain TLDs or registrars.</li>
+              <li>Pages behind authentication, CAPTCHAs, or bot-detection systems cannot be fully analyzed.</li>
+              <li>A valid HTTPS certificate does not guarantee trustworthiness -- many phishing sites use valid certificates from free providers.</li>
+              <li>Newly registered legitimate domains may receive higher risk scores due to lack of established reputation.</li>
+              <li>The tool does not submit forms, bypass access controls, or interact with page functionality beyond passive observation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="method-section">
+        <h3>References</h3>
+        <div class="card">
+          <div class="card-body">
+            <ul class="limitations-list">
+              <li>PhiUSIIL Phishing URL Dataset (UCI ML Repository, ID 967) - Training data source</li>
+              <li>RDAP (Registration Data Access Protocol) - Domain registration lookups</li>
+              <li>Google Safe Browsing API v4 - Threat reputation data (when configured)</li>
+              <li>Team Cymru IP-to-ASN Mapping - Network attribution</li>
+              <li>Tranco Top Sites List - Domain popularity ranking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="pg-footer"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/methodology.js"></script>
+</body>
+</html>

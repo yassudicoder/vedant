@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyzing URL - PhishGuard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="pg-header"></div>
+
+  <main class="pg-main">
+    <div class="container">
+
+      <!-- Confirmation Section -->
+      <div id="scan-confirm" class="scan-confirm">
+        <div class="card">
+          <div class="card-body">
+            <svg class="icon icon-xl icon-centered-warning" aria-hidden="true"><use href="/img/icons.svg#icon-alert-triangle"></use></svg>
+            <h2 class="mb-4">Confirm Analysis</h2>
+            <p class="text-secondary">You are about to analyze the following URL:</p>
+            <div id="scan-url-display" class="scan-url-display"></div>
+            <p class="text-sm text-secondary mb-6">PhishGuard will fetch this URL to analyze its content. Only publicly visible information is examined. No credentials or form data will be submitted.</p>
+            <button id="scan-proceed-btn" class="btn btn-primary btn-lg">
+              <svg class="icon" aria-hidden="true"><use href="/img/icons.svg#icon-search"></use></svg>
+              Proceed with Analysis
+            </button>
+            <p class="text-xs text-secondary mt-4">
+              <a href="/">Cancel and go back</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Section -->
+      <div id="scan-progress" class="scan-progress hidden">
+        <div class="card">
+          <div class="card-body">
+            <div class="scan-progress-header">
+              <svg class="icon icon-xl icon-centered-emerald" aria-hidden="true"><use href="/img/icons.svg#icon-shield"></use></svg>
+              <h2>Analyzing URL</h2>
+              <div class="scan-progress-url" id="scan-progress-url"></div>
+            </div>
+
+            <div class="scan-progress-overall mb-6">
+              <div class="progress">
+                <div id="scan-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <ul id="stage-list" class="stage-list" aria-label="Analysis stages">
+            </ul>
+          </div>
+        </div>
+
+        <!-- Error display -->
+        <div id="scan-error" class="hidden mt-6">
+          <div class="alert alert-danger">
+            <svg class="icon" aria-hidden="true"><use href="/img/icons.svg#icon-x-circle"></use></svg>
+            <span>An error occurred during analysis.</span>
+          </div>
+          <p class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Try another URL</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="pg-footer"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/scanner.js"></script>
+</body>
+</html>
