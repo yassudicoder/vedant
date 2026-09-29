@@ -13,7 +13,6 @@ build/
 
 ml/model.pkl
 ml/metrics.json
-ml/dataset/
 
 reports/*.pdf
 
